@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ContractData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ContractData.cs" id="1_cd"]
+
+[resource]
+script = ExtResource("1_cd")
+Id = "c001_last_call"
+Title = "Last Call at the Neon Swan"
+Type = 0
+FixerName = "Mother Ines"
+Briefing = "Viktor Lusk lends money he shouldn't, to people he shouldn't. He smokes outside the Neon Swan every night. Make it his last. Welcome back to the Ledger, Fred."
+TargetName = "Viktor Lusk"
+LocationHint = "He's smoking outside the Neon Swan, across the street."
+RequiredCred = 0
+PayoutMoney = 2000
+PayoutSovereigns = 2
+PayoutCred = 10

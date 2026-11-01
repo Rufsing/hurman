@@ -1,0 +1,41 @@
+; Engine configuration file.
+; Hurman — Godot 4.7 .NET (C#)
+
+config_version=5
+
+[application]
+
+config/name="Hurman"
+config/description="Neon-noir mercenary game. Fred Hale vs. Port Vesper."
+run/main_scene="res://scenes/world/Main.tscn"
+config/features=PackedStringArray("4.7", "C#", "Forward Plus")
+
+[autoload]
+
+EventBus="*res://scripts/core/EventBus.cs"
+GameState="*res://scripts/core/GameState.cs"
+ContractManager="*res://scripts/core/ContractManager.cs"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+
+[dotnet]
+
+project/assembly_name="Hurman"
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="NPC"
+3d_physics/layer_4="Interactable"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=2

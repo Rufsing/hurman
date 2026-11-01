@@ -1,4 +1,4 @@
-# Plan: Solo Mercenary Game (Godot 4, 3D low-poly third-person)
+# Plan: Solo Mercenary Game (Godot 4.7 .NET / C#, 3D low-poly third-person)
 
 ## Context
 The user wants a hitman/mercenary game in Godot: an open city, an upgradable home base (it starts as a rented basement and later becomes the whole building), driving, gunplay, close-quarters combat, and contracts gated by street cred. The contract types are assassination, destruction and shakedowns. The user has no Godot or programming experience, so Claude builds everything and the user plays, tests and makes design calls. Godot is not installed yet. The first deliverable is a refined concept doc plus a small playable vertical slice.
@@ -51,9 +51,9 @@ The goal is that feel without copying the film's names or lore.
   - **Environment kills**: tables, glass, railings, car doors, and books or objects you can throw.
   - **Hit reactions and ragdolls**: enemies stagger and react, using Godot's PhysicalBone3D for ragdolls.
 - **An underworld society (your own invention)**: the world has a secret criminal society with rules.
-  - **Blood Marks / Tokens**: a separate underworld currency, gold-ish tokens earned from contracts. Use them to pay for services: body disposal (removes heat), safehouses, doctors, the tailor, the armorer, and intel.
+  - **Sovereigns (gold coins)**: a separate underworld currency, gold-ish tokens earned from contracts. Use them to pay for services: body disposal (removes heat), safehouses, doctors, the tailor, the armorer, and intel.
   - **Neutral ground**: a hidden safehouse hotel or club where violence is forbidden. You use it to rest, buy services and meet fixers. Breaking the rule is possible, but it gets you **branded**.
-  - **Branded (outcast) state**: breaking underworld rules, or betraying a fixer, puts a bounty on you. Every hitman in the city hunts you, services are closed to you, and you must survive to clear your name. This works as an endgame or story arc.
+  - **Struck (outcast) state**: breaking underworld rules, or betraying a fixer, puts a bounty on you. Every hitman in the city hunts you, services are closed to you, and you must survive to clear your name. This works as an endgame or story arc.
   - **Markers / oaths**: favors owed between characters. You can call in a marker for help, or be forced to honor one, which leads to story contracts.
 - **Vibe**: neon-soaked night city, rain, reflective streets, a synth/techno soundtrack, and clean suits. Godot 4's SDFGI, volumetric fog and glow fit this well, even with low-poly assets.
 - **Your homebase arc fits this**: a grieving or retired merc who is rebuilding from a rented basement. That's a natural "pulled back in" story hook.
@@ -81,15 +81,15 @@ In 3D, an open city + driving + gunplay + CQC + base building is a large project
 - **Version control**: `git init`, add a Godot `.gitignore` (excluding `.godot/` and `*.import` caches) and `.gitattributes` with Git LFS for `.glb`, `.fbx`, `.png`, `.wav` and `.ogg`, so large assets don't bloat the repo. Set the remote to `https://github.com/Rufsing/hurman`.
 - **Uploading versions**: commit after each completed step and push to `main`. Tag milestones (`v0.1-slice`, â€¦). The first push is the docs only. `gh` 2.103 and git 2.51 are installed. If `gh auth status` shows no login, the user runs `! gh auth login` once.
 - **OneDrive caveat**: OneDrive syncing a `.git` folder and the `.godot/` cache can cause conflicts or locks. If problems appear, pause OneDrive sync for that folder. GitHub is the real backup anyway.
-- **User action**: install **Godot 4.5 stable (standard, GDScript)** from godotengine.org. Claude will give exact steps and can then call the Godot executable for headless checks.
+- **User action**: install **Godot 4.7.2 .NET (C#), already installed at `C:\Program Files (x86)\Godot\`** from godotengine.org. Claude will give exact steps and can then call the Godot executable for headless checks.
 
 ### Milestone 1: Vertical slice (first deliverable)
 1. **Concept doc** written to `docs/GAME_DESIGN.md` (Part 1, expanded).
 2. **Project structure**
    ```
    scenes/{player,vehicles,npc,world,base,ui,missions}
-   scripts/autoload/  GameState.gd (money, cred, heat, upgrades, save/load)
-                       ContractManager.gd, EventBus.gd (global signals)
+   scripts/core/      GameState.cs (money, cred, heat, upgrades, save/load)
+                       ContractManager.cs, EventBus.cs (global signals)
    resources/         WeaponData, ContractData, UpgradeData (.tres custom Resources)
    assets/            imported low-poly models and animations
    ```
@@ -105,7 +105,7 @@ In 3D, an open city + driving + gunplay + CQC + base building is a large project
 12. **Save/load**: GameState serialized to JSON in `user://`.
 
 ### Later milestones (outline)
-- M2: Destruction and shakedown contracts (fear meter), heat and police response, Blood Marks currency, and the neutral-ground safehouse hotel with services.
+- M2: Destruction and shakedown contracts (fear meter), heat and police response, Sovereigns currency, and the Halcyon hotel (neutral ground) with services.
 - M2.5: Expanded gun-fu (throws, disarms, environment kills, armored enemies), the tailor (armored suits).
 - M3: Base expansion (buy floors, gun range, garage, storage, med bay), car purchase and tuning.
 - M4: More city districts, fixers, day/night cycle, target schedules, injuries.
